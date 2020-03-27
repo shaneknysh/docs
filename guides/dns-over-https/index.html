@@ -1564,15 +1564,18 @@ google.com.             191     IN      A       172.217.22.14
 <p>(don't forget to hit Return or click on <code>Save</code>)</p>
 <h3 id="updating-cloudflared">Updating <code>cloudflared</code><a class="headerlink" href="#updating-cloudflared" title="Permanent link">&para;</a></h3>
 <h4 id="manual-way_1">Manual way<a class="headerlink" href="#manual-way_1" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="c1"># stop the service</span>
-sudo systemctl stop cloudflared
-<span class="c1"># fetch and copy the latest version</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># fetch and copy the latest version</span>
 wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 tar -xvzf cloudflared-stable-linux-arm.tgz
+<span class="c1"># stop the service</span>
+sudo systemctl stop cloudflared
+<span class="c1"># copy the binary</span>
 sudo cp ./cloudflared /usr/local/bin
 sudo chmod +x /usr/local/bin/cloudflared
+<span class="c1"># start the service</span>
 sudo systemctl start cloudflared
-<span class="c1"># verify the service is working fine</span>
+<span class="c1"># verify the service and binary are working fine</span>
+cloudflared -v
 sudo systemctl status cloudflared
 </code></pre></div>
 
@@ -1616,7 +1619,7 @@ sudo systemctl daemon-reload
                   <div class="md-source-date">
                     <small>
                       
-                        Last update: March 4, 2020
+                        Last update: March 27, 2020
                       
                     </small>
                   </div>
