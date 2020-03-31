@@ -1432,7 +1432,7 @@
 <p>DNS-Over-HTTPS prevents this by using standard HTTPS requests to retrieve DNS information. This means that the connection from the device to the DNS server is secure and can not easily be snooped, monitored, tampered with or blocked.
 It is worth noting, however, that the upstream DNS-Over-HTTPS provider will still have this ability.</p>
 <h2 id="configuring-dns-over-https">Configuring DNS-Over-HTTPS<a class="headerlink" href="#configuring-dns-over-https" title="Permanent link">&para;</a></h2>
-<p>Along with releasing their DNS service <a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1</a>, Cloudflare implemented DNS-Over-HTTPS proxy functionality into one of their tools: <code>cloudflared</code>.</p>
+<p>Along with releasing their DNS service <a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1</a>, Cloudflare implemented DNS-Over-HTTPS proxy functionality into one of their tools: <a href="https://github.com/cloudflare/cloudflared"><code>cloudflared</code></a>.</p>
 <p>In the following sections, we will be covering how to install and configure this tool on <code>Pi-hole</code>.</p>
 <h3 id="installing-cloudflared">Installing <code>cloudflared</code><a class="headerlink" href="#installing-cloudflared" title="Permanent link">&para;</a></h3>
 <p>The installation is fairly straightforward, however, be aware of what architecture you are installing on (<code>amd64</code> or <code>arm</code>).</p>
@@ -1564,17 +1564,12 @@ google.com.             191     IN      A       172.217.22.14
 <p>(don't forget to hit Return or click on <code>Save</code>)</p>
 <h3 id="updating-cloudflared">Updating <code>cloudflared</code><a class="headerlink" href="#updating-cloudflared" title="Permanent link">&para;</a></h3>
 <h4 id="manual-way_1">Manual way<a class="headerlink" href="#manual-way_1" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="c1"># fetch and copy the latest version</span>
-wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
+<div class="codehilite"><pre><span></span><code>wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 tar -xvzf cloudflared-stable-linux-arm.tgz
-<span class="c1"># stop the service</span>
 sudo systemctl stop cloudflared
-<span class="c1"># copy the binary</span>
 sudo cp ./cloudflared /usr/local/bin
 sudo chmod +x /usr/local/bin/cloudflared
-<span class="c1"># start the service</span>
 sudo systemctl start cloudflared
-<span class="c1"># verify the service and binary are working fine</span>
 cloudflared -v
 sudo systemctl status cloudflared
 </code></pre></div>
@@ -1619,7 +1614,7 @@ sudo systemctl daemon-reload
                   <div class="md-source-date">
                     <small>
                       
-                        Last update: March 27, 2020
+                        Last update: March 28, 2020
                       
                     </small>
                   </div>
