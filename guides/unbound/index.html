@@ -1360,7 +1360,7 @@ sudo mv root.hints /var/lib/unbound/
 <h3 id="configure-unbound">Configure <code>unbound</code><a class="headerlink" href="#configure-unbound" title="Permanent link">&para;</a></h3>
 <p>Highlights:</p>
 <ul>
-<li>Listen only for queries from the local Pi-hole installation (on port 5353)</li>
+<li>Listen only for queries from the local Pi-hole installation (on port 5335)</li>
 <li>Listen for both UDP and TCP requests</li>
 <li>Verify DNSSEC signatures, discarding BOGUS domains</li>
 <li>Apply a few security and privacy tricks</li>
@@ -1371,13 +1371,18 @@ sudo mv root.hints /var/lib/unbound/
     <span class="c1"># logfile: &quot;/var/log/unbound/unbound.log&quot;</span>
     <span class="na">verbosity: 0</span>
 
-    <span class="na">port: 5353</span>
+    <span class="na">interface: 127.0.0.1</span>
+    <span class="na">port: 5335</span>
     <span class="na">do-ip4: yes</span>
     <span class="na">do-udp: yes</span>
     <span class="na">do-tcp: yes</span>
 
     <span class="c1"># May be set to yes if you have IPv6 connectivity</span>
     <span class="na">do-ip6: no</span>
+
+    <span class="c1"># You want to leave this to no unless you have *native* IPv6. With 6to4 and</span>
+    <span class="c1"># Terredo tunnels your web browser should favor IPv4 for the same reasons</span>
+    <span class="na">prefer-ip6: no</span>
 
     <span class="c1"># Use this only when you downloaded the list of primary root servers!</span>
     <span class="na">root-hints: &quot;/var/lib/unbound/root.hints&quot;</span>
@@ -1417,20 +1422,20 @@ sudo mv root.hints /var/lib/unbound/
 
 <p>Start your local recursive server and test that it's operational:</p>
 <div class="highlight"><pre><span></span><code>sudo service unbound start
-dig pi-hole.net @127.0.0.1 -p <span class="m">5353</span>
+dig pi-hole.net @127.0.0.1 -p <span class="m">5335</span>
 </code></pre></div>
 
 <p>The first query may be quite slow, but subsequent queries, also to other domains under the same TLD, should be fairly quick.</p>
 <h3 id="test-validation">Test validation<a class="headerlink" href="#test-validation" title="Permanent link">&para;</a></h3>
 <p>You can test DNSSEC validation using</p>
-<div class="highlight"><pre><span></span><code>dig sigfail.verteiltesysteme.net @127.0.0.1 -p <span class="m">5353</span>
-dig sigok.verteiltesysteme.net @127.0.0.1 -p <span class="m">5353</span>
+<div class="highlight"><pre><span></span><code>dig sigfail.verteiltesysteme.net @127.0.0.1 -p <span class="m">5335</span>
+dig sigok.verteiltesysteme.net @127.0.0.1 -p <span class="m">5335</span>
 </code></pre></div>
 
 <p>The first command should give a status report of <code>SERVFAIL</code> and no IP address. The second should give <code>NOERROR</code> plus an IP address.</p>
 <h3 id="configure-pi-hole">Configure Pi-hole<a class="headerlink" href="#configure-pi-hole" title="Permanent link">&para;</a></h3>
 <p>Finally, configure Pi-hole to use your recursive DNS server by specifying <code>127.0.0.1#5353</code> as the Custom DNS (IPv4):</p>
-<p><img alt="screenshot at 2018-04-18" src="../../images/RecursiveResolver.png" /></p>
+<p><img alt="Upstream DNS Servers Configuration" src="../../images/RecursiveResolver.png" /></p>
 <p>(don't forget to hit Return or click on <code>Save</code>)</p>
                 
                   
@@ -1440,7 +1445,7 @@ dig sigok.verteiltesysteme.net @127.0.0.1 -p <span class="m">5353</span>
 <div class="md-source-date">
   <small>
     
-      Last update: March 4, 2020
+      Last update: April 15, 2020
     
   </small>
 </div>
