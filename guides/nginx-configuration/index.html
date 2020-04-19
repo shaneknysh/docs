@@ -1237,7 +1237,8 @@
                 <h3 id="notes-warnings">Notes &amp; Warnings<a class="headerlink" href="#notes-warnings" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>This is an unsupported configuration created by the community</strong></li>
-<li>If you're using php5, change all instances of <code>php7.0-fpm</code> to <code>php5-fpm</code> and change <code>/run/php/php7.0-fpm.sock</code> to <code>/var/run/php5-fpm.sock</code></li>
+<li><strong>Replace <code>7.3</code> with the PHP version you installed, e.g. if you're using Raspbian Stretch (Debian 9) replace <code>7.3</code> with 7.0`.</strong></li>
+<li>The <code>php7.3-sqlite</code> package must be installed otherwise Networking and Querying will throw an error that it can't access the database.</li>
 </ul>
 <h3 id="basic-requirements">Basic requirements<a class="headerlink" href="#basic-requirements" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1249,7 +1250,7 @@
 </li>
 <li>
 <p>Install necessary packages</p>
-<div class="highlight"><pre><span></span><code>apt-get -y install nginx php7.0-fpm php7.0-zip apache2-utils
+<div class="highlight"><pre><span></span><code>apt-get -y install nginx php7.3-fpm php7.3-zip php7.3-sqlite apache2-utils
 </code></pre></div>
 
 </li>
@@ -1260,8 +1261,8 @@
 
 </li>
 <li>
-<p>Enable php7.0-fpm at startup</p>
-<div class="highlight"><pre><span></span><code>systemctl <span class="nb">enable</span> php7.0-fpm
+<p>Enable php7.3-fpm at startup</p>
+<div class="highlight"><pre><span></span><code>systemctl <span class="nb">enable</span> php7.3-fpm
 </code></pre></div>
 
 </li>
@@ -1291,7 +1292,7 @@
     <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
         <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
         <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root/$fastcgi_script_name</span><span class="p">;</span>
-        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php7.0-fpm.sock</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php7.3-fpm.sock</span><span class="p">;</span>
         <span class="kn">fastcgi_param</span> <span class="s">FQDN</span> <span class="s">true</span><span class="p">;</span>
         <span class="kn">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
         <span class="kn">auth_basic_user_file</span> <span class="s">/etc/nginx/.htpasswd</span><span class="p">;</span> <span class="c1"># For Basic Auth</span>
@@ -1336,8 +1337,8 @@
 
 </li>
 <li>
-<p>Start php7.0-fpm daemon</p>
-<div class="highlight"><pre><span></span><code>service php7.0-fpm start
+<p>Start php7.3-fpm daemon</p>
+<div class="highlight"><pre><span></span><code>service php7.3-fpm start
 </code></pre></div>
 
 </li>
@@ -1377,7 +1378,7 @@ certbot --nginx -m <span class="s2">&quot;</span><span class="nv">$email</span><
 <div class="md-source-date">
   <small>
     
-      Last update: February 10, 2020
+      Last update: February 24, 2020
     
   </small>
 </div>
