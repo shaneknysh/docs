@@ -1429,14 +1429,13 @@ iptables -I INPUT <span class="m">1</span> -s <span class="m">127</span>.0.0.0/8
 iptables -I INPUT <span class="m">1</span> -s <span class="m">127</span>.0.0.0/8 -p udp -m udp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -s <span class="m">192</span>.168.0.0/16 -p tcp -m tcp --dport <span class="m">53</span> -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -s <span class="m">192</span>.168.0.0/16 -p udp -m udp --dport <span class="m">53</span> -j ACCEPT
-iptables -I INPUT <span class="m">1</span> -s <span class="m">192</span>.168.0.0/16 -p tcp -m tcp --dport <span class="m">67</span> -j ACCEPT
-iptables -I INPUT <span class="m">1</span> -s <span class="m">192</span>.168.0.0/16 -p udp -m udp --dport <span class="m">67</span> -j ACCEPT
+iptables -I INPUT <span class="m">1</span> -p udp --dport <span class="m">67</span>:68 --sport <span class="m">67</span>:68 -j ACCEPT
 iptables -I INPUT <span class="m">1</span> -p tcp -m tcp --dport <span class="m">4711</span>:4720 -i lo -j ACCEPT
 iptables -I INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 </code></pre></div>
 
 <p>IP6Tables (<abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr>)</p>
-<div class="highlight"><pre><span></span><code>ip6tables -I INPUT -s fe80::/10 -p udp -m udp --sport <span class="m">546</span>:547 --dport <span class="m">546</span>:547 -j ACCEPT
+<div class="highlight"><pre><span></span><code>ip6tables -I INPUT -p udp -m udp --sport <span class="m">546</span>:547 --dport <span class="m">546</span>:547 -j ACCEPT
 ip6tables -I INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 </code></pre></div>
 
@@ -1470,7 +1469,7 @@ ufw allow <span class="m">67</span>/udp
 <div class="md-source-date">
   <small>
     
-      Last update: February 25, 2020
+      Last update: March 1, 2020
     
   </small>
 </div>
