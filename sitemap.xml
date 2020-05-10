@@ -36,6 +36,26 @@
      <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://docs.pi-hole.net/database/</loc>
+     <lastmod>2020-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.pi-hole.net/database/ftl/</loc>
+     <lastmod>2020-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.pi-hole.net/database/gravity/</loc>
+     <lastmod>2020-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.pi-hole.net/database/gravity/groups/</loc>
+     <lastmod>2020-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.pi-hole.net/database/gravity/example/</loc>
+     <lastmod>2020-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://docs.pi-hole.net/ftldns/</loc>
      <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
@@ -65,10 +85,6 @@
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.pi-hole.net/ftldns/privacylevels/</loc>
-     <lastmod>2020-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://docs.pi-hole.net/ftldns/database/</loc>
      <lastmod>2020-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
