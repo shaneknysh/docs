@@ -1528,7 +1528,6 @@
 </ol>
 <h2 id="example-1-exclude-from-blocking">Example 1: Exclude from blocking<a class="headerlink" href="#example-1-exclude-from-blocking" title="Permanent link">&para;</a></h2>
 <p><strong>Task:</strong> Exclude client 1 from Pi-hole's blocking by removing client 1 from the <code>Default</code> group.</p>
-<p><img alt="Change client groups assignment" src="example-clients-3_1.png" /></p>
 <p><img alt="Change client groups assignment - Overview" src="../example-clients-3.png" /></p>
 <details><summary>Raw database instructions</summary><div class="highlight"><pre><span></span><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">client_by_group</span> <span class="k">WHERE</span> <span class="n">client_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="n">group_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
@@ -1574,7 +1573,6 @@
 <p>All three clients got automatically assigned to the default (<code>Default</code>) group when they were added. The default group includes all adlists and list domains (if not already changed by the user). When we remove the default group for client <code>192.168.0.101</code>, we effectively remove all associations to any adlists and domains. This leaves this client completely unblocked.</p>
 <h2 id="example-2-blocklist-management">Example 2: Blocklist management<a class="headerlink" href="#example-2-blocklist-management" title="Permanent link">&para;</a></h2>
 <p><strong>Task:</strong> Assign adlist with ID 1 to group 1 (in addition to the default assignment to group 0). This results in client <code>192.168.0.101</code> using <em>only this</em> adlist (we removed the default association in the last step).</p>
-<p><img alt="Change blocklist group assignment" src="example-adlists-1_1.png" /></p>
 <p><img alt="Change blocklist group assignment - Overview" src="../example-adlists-1.png" /></p>
 <details><summary>Raw database instructions</summary><div class="highlight"><pre><span></span><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">adlist_by_group</span> <span class="p">(</span><span class="n">adlist_id</span><span class="p">,</span> <span class="n">group_id</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 </code></pre></div>
@@ -1902,7 +1900,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: May 8, 2020
+      Last update: May 11, 2020
     
   </small>
 </div>
