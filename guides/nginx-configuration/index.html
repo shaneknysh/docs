@@ -1346,7 +1346,7 @@
 <ul>
 <li><strong>This is an unsupported configuration created by the community</strong></li>
 <li><strong>Replace <code>7.3</code> with the PHP version you installed, e.g. if you're using Raspbian Stretch (Debian 9) replace <code>7.3</code> with <code>7.0</code>.</strong></li>
-<li>The <code>php7.3-sqlite</code> package must be installed otherwise Networking and Querying will throw an error that it can't access the database.</li>
+<li>The <code>php7.3-sqlite3</code> package must be installed otherwise Networking and Querying will throw an error that it can't access the database.</li>
 </ul>
 <h3 id="basic-requirements">Basic requirements<a class="headerlink" href="#basic-requirements" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1358,7 +1358,7 @@
 </li>
 <li>
 <p>Install necessary packages</p>
-<div class="highlight"><pre><span></span><code>apt-get -y install nginx php7.3-fpm php7.3-zip php7.3-sqlite apache2-utils
+<div class="highlight"><pre><span></span><code>apt-get -y install nginx php7.3-fpm php7.3-xml php7.3-sqlite3 php7.3-intl apache2-utils
 </code></pre></div>
 
 </li>
@@ -1445,6 +1445,12 @@
 
 </li>
 <li>
+<p>Grant the admin panel access to the gravity database</p>
+<div class="highlight"><pre><span></span><code>usermod -aG pihole www-data
+</code></pre></div>
+
+</li>
+<li>
 <p>Start php7.3-fpm daemon</p>
 <div class="highlight"><pre><span></span><code>service php7.3-fpm start
 </code></pre></div>
@@ -1486,7 +1492,7 @@ certbot --nginx -m <span class="s2">&quot;</span><span class="nv">$email</span><
 <div class="md-source-date">
   <small>
     
-      Last update: May 11, 2020
+      Last update: May 12, 2020
     
   </small>
 </div>
