@@ -933,6 +933,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#installing-caddy" class="md-nav__link">
+    Installing Caddy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-up-your-caddyfile" class="md-nav__link">
     Setting up your Caddyfile
   </a>
@@ -941,15 +948,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#caddyfile-caddy-version-1" class="md-nav__link">
-    Caddyfile (Caddy Version 1)
+  <a href="#caddyfile-for-caddy-v2" class="md-nav__link">
+    Caddyfile (for Caddy v2)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#caddyfile-caddy-version-2" class="md-nav__link">
-    Caddyfile (Caddy version 2)
+  <a href="#caddyfile-for-caddy-v1" class="md-nav__link">
+    Caddyfile (for Caddy v1)
   </a>
   
 </li>
@@ -1327,6 +1334,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#installing-caddy" class="md-nav__link">
+    Installing Caddy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-up-your-caddyfile" class="md-nav__link">
     Setting up your Caddyfile
   </a>
@@ -1335,15 +1349,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#caddyfile-caddy-version-1" class="md-nav__link">
-    Caddyfile (Caddy Version 1)
+  <a href="#caddyfile-for-caddy-v2" class="md-nav__link">
+    Caddyfile (for Caddy v2)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#caddyfile-caddy-version-2" class="md-nav__link">
-    Caddyfile (Caddy version 2)
+  <a href="#caddyfile-for-caddy-v1" class="md-nav__link">
+    Caddyfile (for Caddy v1)
   </a>
   
 </li>
@@ -1401,9 +1415,36 @@
 <div class="highlight"><pre><span></span><code>sudo service lighttpd restart
 </code></pre></div>
 
+<h2 id="installing-caddy">Installing Caddy<a class="headerlink" href="#installing-caddy" title="Permanent link">&para;</a></h2>
+<p>Follow the instructions on the <a href="https://caddyserver.com/docs/download">Caddy download</a> documentation page.</p>
 <h2 id="setting-up-your-caddyfile">Setting up your Caddyfile<a class="headerlink" href="#setting-up-your-caddyfile" title="Permanent link">&para;</a></h2>
-<p>Now set up a "virtual host" in your Caddyfile (default <code>/etc/caddy/Caddyfile</code>). There are many options you can add, but at a minimum, you need to make a "default" host by binding <code>0.0.0.0:80</code>. This will accept requests for any interface.</p>
-<h3 id="caddyfile-caddy-version-1">Caddyfile (Caddy Version 1)<a class="headerlink" href="#caddyfile-caddy-version-1" title="Permanent link">&para;</a></h3>
+<p>Now set up a "virtual host" in your Caddyfile (default <code>/etc/caddy/Caddyfile</code>). There are many options you can add, but at a minimum, you need to make a "default" host by binding <code>:80</code>. This will accept requests for any interface on port <code>80</code>.</p>
+<h3 id="caddyfile-for-caddy-v2">Caddyfile (for Caddy v2)<a class="headerlink" href="#caddyfile-for-caddy-v2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>http://pi.hole {
+  reverse_proxy localhost:1080
+}
+</code></pre></div>
+
+<ul>
+<li>If you'd like to enable HTTPS on your site, make sure your server is reachable via your domain name (ex: myawesomesite.com) and is pointing to the right IP address.</li>
+<li>Additionally you need to open ports :80 and :443 (Apart from the one's required specifically for pi-hole) for your server before setting up HTTPS.</li>
+</ul>
+<p>The following configuration will automatically fetch and setup HTTPS for your domain using Lets-Encrypt</p>
+<div class="highlight"><pre><span></span><code>myawesomesite.com {
+  reverse_proxy localhost:1080
+}
+</code></pre></div>
+
+<p>Additionally you can make pihole reacheable via a subdomain and optionally can you enable Zstandard and Gzip compression as follows:</p>
+<div class="highlight"><pre><span></span><code>pihole.myawesomesite.com {
+  reverse_proxy localhost:1080
+  encode zstd gzip
+}
+</code></pre></div>
+
+<p>Finally, run <code>sudo systemctl caddy reload</code> to reload Caddy with the new configuration.</p>
+<h3 id="caddyfile-for-caddy-v1">Caddyfile (for Caddy v1)<a class="headerlink" href="#caddyfile-for-caddy-v1" title="Permanent link">&para;</a></h3>
+<p>Caddy v1 is no longer actively supported, but the following is a config example if you're running an old installation.</p>
 <div class="highlight"><pre><span></span><code>blackhole:80, pi.hole:80, 0.0.0.0:80 {
   root /var/www/html/pihole
   log /var/log/caddy/blackhole.log
@@ -1419,31 +1460,7 @@
 }
 </code></pre></div>
 
-<p>In this case, I've chosen to also add blackhole and pi.hole as valid names to open the admin page with.</p>
-<h3 id="caddyfile-caddy-version-2">Caddyfile (Caddy version 2)<a class="headerlink" href="#caddyfile-caddy-version-2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>pi.hole:80{
-  reverse_proxy localhost:1080
-}
-</code></pre></div>
-
-<ul>
-<li>If you'd like to enable Https on your site, make sure your server is reacheable via your domain name (ex: myawesomesite.com) and is pointing to the right IP address.</li>
-<li>Additionally you need to open ports :80 and :443 (Apart from the one's required specifically for pi-hole) for your server before setting up https.</li>
-</ul>
-<p>The following configuration will automatically fetch and setup Https for your domain using Lets-Encrypt</p>
-<div class="highlight"><pre><span></span><code>myawesomesite.com {
-  reverse_proxy localhost:1080
-}
-</code></pre></div>
-
-<p>Additionally you can make pihole reacheable via a subdomain and optionally can you enable Zstandard and Gzip compression as follows:</p>
-<div class="highlight"><pre><span></span><code>pihole.myawesomesite.com {
-  reverse_proxy localhost:1080
-  encode zstd gzip
-}
-</code></pre></div>
-
-<p>Finally, run <code>sudo systemctl daemon-reload</code> to force caddy to load the new configuration.</p>
+<p>In this example, <code>blackhole</code> and <code>pi.hole</code> are added as valid names with which to open the admin page.</p>
 <h2 id="verifying-your-setup">Verifying your setup<a class="headerlink" href="#verifying-your-setup" title="Permanent link">&para;</a></h2>
 <p>First, make sure that any other sites you're serving from caddy are still functioning. For example, if you have a block for <code>myawesomesite.com:80</code> or similar in your Caddyfile, open up a browser to <code>http://myawesomesite.com</code> (or <code>https://</code> if you have enabled it) and verify it still loads.</p>
 <p>Next, verify you can load the admin page. Open up <code>http://pi.hole/admin</code> (or use the IP address of your server) and verify that you can access the admin page.</p>
@@ -1464,7 +1481,8 @@
 var <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;Pi-hole: A black hole for Internet advertisements.&quot;</span>
 </code></pre></div>
 
-<p>For more information visit caddy's documentation <a href="https://caddyserver.com/docs/">website</a>.</p>
+<p>For more information visit Caddy's documentation <a href="https://caddyserver.com/docs/">website</a>.</p>
+<p>For usage questions or support, visit the <a href="https://caddy.community/">Caddy Community forums</a>.</p>
                 
                   
                     
@@ -1473,7 +1491,7 @@ var <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;Pi
 <div class="md-source-date">
   <small>
     
-      Last update: April 30, 2020
+      Last update: May 14, 2020
     
   </small>
 </div>
