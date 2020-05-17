@@ -1404,7 +1404,7 @@ As the domains in the long-term database reflect <strong>your particular</strong
 <div class="highlight"><pre><span></span><code>DBFILE=
 </code></pre></div>
 
-<p>in <code>/etc/pihole/pihole-FTL.conf</code> and running <code>sudo pihole restartdns</code> (see also <a href="/ftldns/configfile/#dbfile">here</a>).</p>
+<p>in <code>/etc/pihole/pihole-FTL.conf</code> and running <code>sudo pihole restartdns</code> (see also <a href="../../ftldns/configfile/#dbfile">here</a>).</p>
 <h3 id="22-increase-dns-cache-size">2.2 Increase <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache size<a class="headerlink" href="#22-increase-dns-cache-size" title="Permanent link">&para;</a></h3>
 <p>We also suggest increasing the <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> cache for benchmarking. The rather low value is fine for typical use cases. Domains will expire at some point and make room for new domains. As the benchmark will artificially increase the querying rate, there will be no time for the domains to expire naturally. This would dramatically hit the caching performance while you would never see such performance penalties in real use cases.</p>
 <p>Set <code>cache-size</code> to a rather high value (maybe 25,000 - by guess roughly one-eighth to one-fourth number of the domains you extracted from the database in step 1) in <code>/etc/dnsmasq.d/01-pihole.conf</code> and run <code>sudo pihole restartdns</code> afterward.</p>
@@ -1422,7 +1422,7 @@ As the domains in the long-term database reflect <strong>your particular</strong
 <div class="md-source-date">
   <small>
     
-      Last update: February 5, 2020
+      Last update: May 17, 2020
     
   </small>
 </div>

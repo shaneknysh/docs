@@ -1371,8 +1371,7 @@
                 <h3 id="what-to-whitelist-or-blacklist">What to Whitelist or Blacklist<a class="headerlink" href="#what-to-whitelist-or-blacklist" title="Permanent link">&para;</a></h3>
 <p><a href="https://chrome.google.com/webstore/detail/adamone-assistant/fdmpekabnlekabjlimjkfmdjajnddgpc">This extension for Google Chrome</a> can help you in finding out which domains you need to whitelist.</p>
 <h3 id="how-to-whitelist-or-blacklist">How to Whitelist or Blacklist<a class="headerlink" href="#how-to-whitelist-or-blacklist" title="Permanent link">&para;</a></h3>
-<p>There are scripts to aid users in adding or removing domains to the whitelist or blacklist.</p>
-<p>The scripts will first parse <code>whitelist.txt</code> or <code>blacklist.txt</code> for any changes, and if any additions or deletions are detected, it will reload <code>dnsmasq</code> so that they are effective immediately.</p>
+<p>There are scripts to aid users in adding or removing domains to the whitelist or blacklist from the CLI</p>
 <p>Each script accepts the following parameters:</p>
 <table>
 <thead>
@@ -1408,19 +1407,19 @@
 <h4 id="example-pihole-w-usages">Example <code>pihole -w</code> usages<a class="headerlink" href="#example-pihole-w-usages" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p>Attempt to add one or more domains to the whitelist and reload dnsmasq:</p>
+<p>Attempt to add one or more domains to the whitelist and reload pihole-FTL:</p>
 <div class="highlight"><pre><span></span><code>pihole -w domain1 <span class="o">[</span>domain2...<span class="o">]</span>
 </code></pre></div>
 
 </li>
 <li>
-<p>Attempt to add one or more domains to the whitelist, but do not reload dnsmasq:</p>
+<p>Attempt to add one or more domains to the whitelist, but do not reload pihole-FTL:</p>
 <div class="highlight"><pre><span></span><code>pihole -w -nr domain1 <span class="o">[</span>domain2...<span class="o">]</span>
 </code></pre></div>
 
 </li>
 <li>
-<p>Attempt to add one or more domains to the whitelist and force dnsmasq to reload:</p>
+<p>Attempt to add one or more domains to the whitelist and force pihole-FTL to reload:</p>
 <div class="highlight"><pre><span></span><code>pihole -w -f domain1 <span class="o">[</span>domain2...<span class="o">]</span>
 </code></pre></div>
 
@@ -1433,19 +1432,19 @@
 <h4 id="example-pihole-b-usages">Example <code>pihole -b</code> usages<a class="headerlink" href="#example-pihole-b-usages" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p>Attempt to add one or more domains to the blacklist and reload dnsmasq:</p>
+<p>Attempt to add one or more domains to the blacklist and reload pihole-FTL:</p>
 <div class="highlight"><pre><span></span><code>pihole -b domain1 <span class="o">[</span>domain2...<span class="o">]</span>
 </code></pre></div>
 
 </li>
 <li>
-<p>Attempt to add one or more domains to the blacklist, but do not reload dnsmasq:</p>
+<p>Attempt to add one or more domains to the blacklist, but do not reload pihole-FTL:</p>
 <div class="highlight"><pre><span></span><code>pihole -b -nr domain1 <span class="o">[</span>domain2...<span class="o">]</span>
 </code></pre></div>
 
 </li>
 <li>
-<p>Attempt to add one or more domains to the blacklist and force dnsmasq to reload:</p>
+<p>Attempt to add one or more domains to the blacklist and force pihole-FTL to reload:</p>
 <div class="highlight"><pre><span></span><code>pihole -b -f domain1 <span class="o">[</span>domain2...<span class="o">]</span>
 </code></pre></div>
 
@@ -1462,7 +1461,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: May 17, 2020
+      Last update: May 14, 2020
     
   </small>
 </div>

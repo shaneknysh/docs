@@ -1489,19 +1489,19 @@ Any hardware that runs one of the supported operating systems will do!</p>
 </thead>
 <tbody>
 <tr>
-<td>dnsmasq</td>
+<td>pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></td>
 <td align="left">53  (<abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr>)</td>
 <td align="left"><abbr title="Transmission Control Protocol (protocol providing reliable, ordered, and error-checked delivery of data between applications running on hosts communicating via an IP network)">TCP</abbr>/<abbr title="User Datagram Protocol (a network communications method for sending messages as datagrams)">UDP</abbr></td>
 <td>If you happen to have another <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> server running, such as BIND, you will need to turn it off in order for Pi-hole to respond to <abbr title="Domain Name Service (decentralized naming system for computers, services, or other resources connected to the Internet)">DNS</abbr> queries.</td>
 </tr>
 <tr>
-<td>dnsmasq</td>
+<td>pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></td>
 <td align="left">67  (<abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr>)</td>
 <td align="left"><abbr title="Internet Protocol version 4 (addresses like 192.168.0.1)">IPv4</abbr> <abbr title="User Datagram Protocol (a network communications method for sending messages as datagrams)">UDP</abbr></td>
 <td>The <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> server is an optional feature that requires additional ports.</td>
 </tr>
 <tr>
-<td>dnsmasq</td>
+<td>pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr></td>
 <td align="left">547 (<abbr title="Dynamic Host Configuration Protocol version 6 (a network protocol for configuring Internet Protocol version 6 (IPv6) hosts with IP addresses)">DHCPv6</abbr>)</td>
 <td align="left"><abbr title="Internet Protocol version 6 (addresses like 2001:db8::ff00:42:8329)">IPv6</abbr> <abbr title="User Datagram Protocol (a network communications method for sending messages as datagrams)">UDP</abbr></td>
 <td>The <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> server is an optional feature that requires additional ports.</td>
@@ -1523,7 +1523,7 @@ Any hardware that runs one of the supported operating systems will do!</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The use of lighttpd on port <em>80</em> is optional if you decide not to install the Web dashboard during installation.
-The use of dnsmasq on ports <em>67</em> or <em>547</em> is optional, but required if you use the <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> functions of Pi-hole.</p>
+The use of pihole-<abbr title="Pi-hole's Faster Than Light daemon">FTL</abbr>  on ports <em>67</em> or <em>547</em> is optional, but required if you use the <abbr title="Dynamic Host Configuration Protocol (network management protocol for configuring Internet Protocol version 4 (IPv4) hosts with IP addresses)">DHCP</abbr> functions of Pi-hole.</p>
 </div>
 <h3 id="firewalls">Firewalls<a class="headerlink" href="#firewalls" title="Permanent link">&para;</a></h3>
 <p>Below are some examples of firewall rules that will need to be set on your Pi-hole server in order to use the functions available. These are only shown as guides, the actual commands used will be found with your distribution's documentation.
@@ -1577,7 +1577,7 @@ ufw allow <span class="m">67</span>/udp
 <div class="md-source-date">
   <small>
     
-      Last update: May 17, 2020
+      Last update: May 14, 2020
     
   </small>
 </div>

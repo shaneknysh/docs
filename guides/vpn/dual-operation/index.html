@@ -1317,7 +1317,7 @@
                   <h1>Optional: Dual operation: LAN & VPN at the same time</h1>
                 
                 <p><strong>Up until now, this wiki has been about a server set up on a cloud host, available on the public Internet. This section is aimed at a server set up in a private network like on a Raspberry Pi.</strong></p>
-<p>So if blocking works using <code>eth0</code> but stops working for <code>tun0</code>, as described <a href="https://github.com/pi-hole/pi-hole/issues/1553">here</a>, you may want to run this command <code>pihole -a -i all</code>, which should get the behavior you want by opening dnsmasq up to listen on all ports. This is not recommended for cloud servers as they should <em>not</em> be listening on <code>eth0</code>.</p>
+<p>So if blocking works using <code>eth0</code> but stops working for <code>tun0</code>, as described <a href="https://github.com/pi-hole/pi-hole/issues/1553">here</a>, you may want to run this command <code>pihole -a -i all</code>, which should get the behavior you want by opening pihole-FTL up to listen on all ports. This is not recommended for cloud servers as they should <em>not</em> be listening on <code>eth0</code>.</p>
 <p>If you want to set up your Pi-hole + OpenVPN such that you can use from both internal ((W)LAN) and external (VPN) networks, you have to apply some small changes. As an additional benefit, you will be able to reach all devices in the internal network (e.g. computers, networking-aware printers, etc.) through the VPN.</p>
 <p>This setup assumes that your local network is in the range <strong>192.168.2.0</strong> (i.e. device addresses are in the range of 192.168.2.1 - 192.168.2.254). If this is not the case for you, you have to adjust the settings, accordingly, e.g.</p>
 <ul>
@@ -1384,7 +1384,7 @@ rtt min/avg/max/mdev <span class="o">=</span> <span class="m">18</span>.740/18.8
 <div class="md-source-date">
   <small>
     
-      Last update: February 5, 2020
+      Last update: May 14, 2020
     
   </small>
 </div>
