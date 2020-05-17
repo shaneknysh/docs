@@ -1375,71 +1375,85 @@
 <p>The scripts will first parse <code>whitelist.txt</code> or <code>blacklist.txt</code> for any changes, and if any additions or deletions are detected, it will reload <code>dnsmasq</code> so that they are effective immediately.</p>
 <p>Each script accepts the following parameters:</p>
 <table>
-  <tbody>
-      <tr>
-         <th><code>[domain]</code></th>
-         <td>Fully qualified domain name you wish to add or remove. You can pass any number of domains.</td>
-      </tr>
-      <tr>
-         <th><code>-d</code></th>
-         <td>Removal mode. Domains will be removed from the list, rather than added</td>
-      </tr>
-      <tr>
-         <th><code>-nr</code></th>
-         <td>Update blacklist without refreshing dnsmasq</td>
-      </tr>
-      <tr>
-         <th><code>-f</code></th>
-         <td>Force delete cached blocklist content</td>
-      </tr>
-      <tr>
-         <th><code>-q</code></th>
-         <td>Quiet mode. Console output is minimal. Useful for calling from another script (see <code>gravity.sh</code>)</td>
-      </tr>
-   </tbody>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[domain]</code></td>
+<td>Fully qualified domain name you wish to add or remove. You can pass any number of domains.</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>Removal mode. Domains will be removed from the list, rather than added</td>
+</tr>
+<tr>
+<td><code>-nr</code></td>
+<td>Update blacklist without refreshing pihole-FTL</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>Force delete cached blocklist content</td>
+</tr>
+<tr>
+<td><code>-q</code></td>
+<td>Quiet mode. Console output is minimal. Useful for calling from another script (see <code>gravity.sh</code>)</td>
+</tr>
+</tbody>
 </table>
-
 <p>Domains passed are parsed by the script to ensure they are valid domains. If a domain is invalid it will be ignored.</p>
 <h4 id="example-pihole-w-usages">Example <code>pihole -w</code> usages<a class="headerlink" href="#example-pihole-w-usages" title="Permanent link">&para;</a></h4>
-<table>
-  <tbody>
-      <tr>
-         <th><code>pihole -w domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the whitelist and reload dnsmasq.</td>
-      </tr>
-      <tr>
-         <th><code>pihole -w -nr domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the whitelist, but do not reload dnsmasq.</td>
-      </tr>
-      <tr>
-         <th><code>pihole -w -f domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the whitelist and force dnsmasq to reload</td>
-      </tr>
-   </tbody>
-</table>
+<ul>
+<li>
+<p>Attempt to add one or more domains to the whitelist and reload dnsmasq:</p>
+<div class="highlight"><pre><span></span><code>pihole -w domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
 
-<p>To remove domains from the whitelist:
-Add <code>-d</code> as an additional argument (e.g <code>pihole -w -d domain1 [domain2...]</code>)</p>
+</li>
+<li>
+<p>Attempt to add one or more domains to the whitelist, but do not reload dnsmasq:</p>
+<div class="highlight"><pre><span></span><code>pihole -w -nr domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Attempt to add one or more domains to the whitelist and force dnsmasq to reload:</p>
+<div class="highlight"><pre><span></span><code>pihole -w -f domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
+
+</li>
+</ul>
+<p>To remove domains from the whitelist add <code>-d</code> as an additional argument, e.g:</p>
+<div class="highlight"><pre><span></span><code>pihole -w -d domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
+
 <h4 id="example-pihole-b-usages">Example <code>pihole -b</code> usages<a class="headerlink" href="#example-pihole-b-usages" title="Permanent link">&para;</a></h4>
-<table>
-  <tbody>
-      <tr>
-         <th><code>pihole -b domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the blacklist and reload dnsmasq.</td>
-      </tr>
-      <tr>
-         <th><code>pihole -b -nr domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the blacklist, but do not reload dnsmasq.</td>
-      </tr>
-      <tr>
-         <th><code>pihole -b -f domain1 [domain2...]</code></th>
-         <td>Attempt to add one or more domains to the blacklist and force dnsmasq to reload</td>
-      </tr>
-   </tbody>
-</table>
+<ul>
+<li>
+<p>Attempt to add one or more domains to the blacklist and reload dnsmasq:</p>
+<div class="highlight"><pre><span></span><code>pihole -b domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
 
-<p>To remove domains from the blacklist:
-Add <code>-d</code> as an additional argument (e.g <code>pihole -b -d domain1 [domain2...]</code>)</p>
+</li>
+<li>
+<p>Attempt to add one or more domains to the blacklist, but do not reload dnsmasq:</p>
+<div class="highlight"><pre><span></span><code>pihole -b -nr domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Attempt to add one or more domains to the blacklist and force dnsmasq to reload:</p>
+<div class="highlight"><pre><span></span><code>pihole -b -f domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
+
+</li>
+</ul>
+<p>To remove domains from the blacklist add <code>-d</code> as an additional argument, e.g:</p>
+<div class="highlight"><pre><span></span><code>pihole -b -d domain1 <span class="o">[</span>domain2...<span class="o">]</span>
+</code></pre></div>
                 
                   
                     
@@ -1448,7 +1462,7 @@ Add <code>-d</code> as an additional argument (e.g <code>pihole -b -d domain1 [d
 <div class="md-source-date">
   <small>
     
-      Last update: December 12, 2019
+      Last update: May 17, 2020
     
   </small>
 </div>
