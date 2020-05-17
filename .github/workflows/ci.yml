@@ -5,7 +5,14 @@ env:
   NODE: 12.x
   PYTHON_VERSION: '3.7'
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - "**-ci"
+  pull_request:
+    branches:
+      - "**"
 
 jobs:
   build:
