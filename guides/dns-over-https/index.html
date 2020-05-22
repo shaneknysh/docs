@@ -1609,7 +1609,11 @@ cloudflared -v
 <div class="highlight"><pre><span></span><code>sudo useradd -s /usr/sbin/nologin -r -M cloudflared
 </code></pre></div>
 
-<p>Proceed to create a configuration file for <code>cloudflared</code> by copying the following in to <code>/etc/default/cloudflared</code>. This file contains the command-line options that get passed to cloudflared on startup:</p>
+<p>Proceed to create a configuration file for <code>cloudflared</code>:</p>
+<div class="highlight"><pre><span></span><code>sudo nano /etc/default/cloudflared
+</code></pre></div>
+
+<p>Edit configuration file by copying the following in to <code>/etc/default/cloudflared</code>. This file contains the command-line options that get passed to cloudflared on startup:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Commandline args for cloudflared</span>
 <span class="nv">CLOUDFLARED_OPTS</span><span class="o">=</span>--port <span class="m">5053</span> --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
 </code></pre></div>
@@ -1757,7 +1761,7 @@ sudo systemctl daemon-reload
 <div class="md-source-date">
   <small>
     
-      Last update: March 28, 2020
+      Last update: May 22, 2020
     
   </small>
 </div>
