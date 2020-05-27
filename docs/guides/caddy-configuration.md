@@ -2,7 +2,7 @@
 
 If you'd like to use [Caddy](https://caddyserver.com/) as your main web server with Pi-hole, you'll need to make a few changes.
 
-> Note: This guide only deals with setting up caddy as a reverse-proxy and not as a replacement for lighttpd (Although caddy is capable of doing so, but it is beyond the scope of this guide).
+> Note: This guide only deals with setting up caddy as a reverse-proxy and not as a replacement for lighttpd (Although caddy is [capable of doing so](https://caddy.community/t/using-caddy-instead-of-lighttpd-with-pi-hole/8087), but it is beyond the scope of this guide).
 
 ## Modifying lighttpd configuration
 
